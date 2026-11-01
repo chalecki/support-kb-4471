@@ -4,7 +4,7 @@ title: '#4471 · what the merged reports show'
 owner: chalecki
 status: closed
 reviewed: 2026-11-01
-signature: chalecki
+signature: 'v1.eyJzdWIiOiI4NjIiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzU0NjI1NiwiZXhwIjoxNzkzNjMyNjU2fQ.m8qXL_-x-gvIlUZkiJ7r04fC3FVVbHR3HpC-zUmYm5s'
 ---
 
 <script>
