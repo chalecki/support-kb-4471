@@ -1,0 +1,50 @@
+---
+layout: runbook
+title: '#4471 · what the merged reports show'
+owner: chalecki
+status: open
+reviewed: 2026-11-01
+signature: chalecki
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. The reports inside it
+describe more than one failure, and the queued parser fix does not reach all of them.
+
+## The problems
+
+<ProblemTable ticket={4471} repo="chalecki/support-kb-4471" tickets={{ parser: 1, hint: 2, 'one-day': 3 }} />
+
+<Callout kind="warn">
+The table on the #4471 page shows the same reports with <code>one-day</code> counted inside
+<code>parser</code>. That page files by tenant and footnotes them. This page counts them apart,
+because a month-first parser cannot produce what they describe.
+</Callout>
+
+## How to tell them apart
+
+- **`parser`.** The shared parser reads every date month first, and these tenants write the day
+  first. Day and month swap: R-41203 booked 2 December and got 12 February.
+- **`hint`.** The date came through the form of a tenant on `booking-v3`. That form prints
+  `MM/DD/YYYY` under its date field, so people type month first, and the form reads it the
+  tenant's way. These people followed the hint. The bodies look like `parser`; the way in does not.
+  Fixing the parser leaves the hint printing the wrong order.
+- **`one-day`.** The date moves by one day, with no swap: R-41202 says Tuesday 12 May against
+  Monday 11 May, and R-41344 had Lisbon on Tuesday and Toronto on Monday for one meeting. The cause
+  is not established yet. The Lisbon and Toronto report points at time zones, and that is a lead,
+  not a finding.
+
+## What to do with this
+
+- Do not close these on the parser fix. Check `hint` and `one-day` on their own tickets.
+- Count from the tenant directory, not from intake's tag or the subject line. Neither one separates
+  these problems, and [decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on the subject alone.
+- Three reports carry no dates that show a swap: R-41290, R-41417 and R-41514. They stay in `parser`
+  by tenant, with nothing in their bodies against it.
+
+<RenderStamp {signature} />
