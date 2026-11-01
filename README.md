@@ -38,7 +38,7 @@ Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
 ## Added to this export
 
 - `src/routes/kb/incidents/4471/problems/+page.svx`: the signed page about the problems in #4471.
-- `src/lib/kb/problems.ts`, `src/lib/kb/ProblemTable.svelte`: the logic and table behind it.
+- `src/lib/kb/problems.ts`, `src/lib/kb/ProblemTable.svelte`: the checks and table behind it.
 - `rendered/`: the built site. The page as the desk sees it is `rendered/kb/incidents/4471/problems.html`,
   with a picture in `rendered/problems.png`.
 - `package.json`, `vite.config.js`, `src/app.html`, `src/routes/+layout.js`: the build the export left out. Run `npm ci && npm run build`.

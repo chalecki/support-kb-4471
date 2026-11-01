@@ -9,11 +9,11 @@
 		<link href="../../../_app/immutable/chunks/CptVIHXj.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CHfFqfNT.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DQG8lHS1.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.Dvk5GVQ2.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.BJvDcaJe.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.Izv2btRW.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/5.DJePRn56.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/l91peE1a.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.CDfSAvXp.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/BiRMwpH6.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DkoUumqI.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CVBzP17p.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DcZ9TEUN.js" rel="modulepreload">
@@ -24,28 +24,25 @@
   </head>
   <body>
     <div><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · what the merged reports show</h1> <p class="meta svelte-e2jw2j"><span>owner <b>chalecki</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-11-01 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> is marked known: one issue, one fix queued. The reports inside it
-describe more than one failure, and the queued parser fix does not reach all of them.</p> <h2>The problems</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code></td><td>374</td><td>11</td><td>2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/chalecki/support-kb-4471/issues/1">chalecki/support-kb-4471#1</a><!--]--></td></tr><tr><td><code>hint</code></td><td>33</td><td>3</td><td>2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/chalecki/support-kb-4471/issues/2">chalecki/support-kb-4471#2</a><!--]--></td></tr><tr><td><code>one-day</code></td><td>5</td><td>5</td><td>2026-04-02 → 2026-10-04</td><td><!--[0--><a href="https://github.com/chalecki/support-kb-4471/issues/3">chalecki/support-kb-4471#3</a><!--]--></td></tr><!--]--></tbody></table> <ul class="checks svelte-1op6c6"><li>The export holds 427 rows. 15 repeat an id from an overlapping page, so they count once.</li> <li>Intake's tag disagrees with the tenant lookup on 38 reports. These counts use the lookup.</li> <li>10 subject lines appear under more than one problem.</li></ul><!----> <aside class="warn svelte-17bri61"><!---->The table on the #4471 page shows the same reports with <code>one-day</code> counted inside <code>parser</code>. That page files by tenant and footnotes them. This page counts them apart,
-because a month-first parser cannot produce what they describe.<!----></aside><!----> <h2>How to tell them apart</h2> <ul><li><strong><code>parser</code>.</strong> The shared parser reads every date month first, and these tenants write the day
+describe more than one problem, and the queued parser fix does not reach all of them.</p> <h2>The problems</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports merged into #4471 · <strong>2</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code></td><td>379</td><td>11</td><td>2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/chalecki/support-kb-4471/issues/1">chalecki/support-kb-4471#1</a><!--]--></td></tr><tr><td><code>hint</code></td><td>33</td><td>3</td><td>2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/chalecki/support-kb-4471/issues/2">chalecki/support-kb-4471#2</a><!--]--></td></tr><!--]--></tbody></table> <ul class="checks svelte-1op6c6"><li>The export holds 427 rows. 15 repeat an id from an overlapping page, so they count once.</li> <li>Intake's tag disagrees with the tenant lookup on 38 reports. These counts use the lookup.</li> <li>10 subject lines appear under more than one problem.</li> <!--[--><!--[0--><li>5 of the <code>parser</code> reports read as a one-day move. They stay under <code>parser</code> by tenant.</li><!--]--><!--[-1--><!--]--><!--]--></ul><!----> <aside class="warn svelte-17bri61"><!---->Do not close <code>hint</code> on the parser fix. It needs its own fix on the form.<!----></aside><!----> <h2>How to tell them apart</h2> <ul><li><strong><code>parser</code>.</strong> The shared parser reads every date month first, and these tenants write the day
 first. Day and month swap: R-41203 booked 2 December and got 12 February.</li> <li><strong><code>hint</code>.</strong> The date came through the form of a tenant on <code>booking-v3</code>. That form prints <code>MM/DD/YYYY</code> under its date field, so people type month first, and the form reads it the
 tenant’s way. These people followed the hint. The bodies look like <code>parser</code>; the way in does not.
-Fixing the parser leaves the hint printing the wrong order.</li> <li><strong><code>one-day</code>.</strong> The date moves by one day, with no swap: R-41202 says Tuesday 12 May against
-Monday 11 May, and R-41344 had Lisbon on Tuesday and Toronto on Monday for one meeting. The cause
-is not established yet. The Lisbon and Toronto report points at time zones, and that is a lead,
-not a finding.</li></ul> <h2>What to do with this</h2> <ul><li>Do not close these on the parser fix. Check <code>hint</code> and <code>one-day</code> on their own tickets.</li> <li>Count from the tenant directory, not from intake’s tag or the subject line. Neither one separates
-these problems, and <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> merges on the subject alone.</li> <li>Three reports carry no dates that show a swap: R-41290, R-41417 and R-41514. They stay in <code>parser</code> by tenant, with nothing in their bodies against it.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-5TV1-K8Z7</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+Fixing the parser leaves the hint printing the wrong order.</li></ul> <h2>What to do with this</h2> <ul><li>Count from the tenant directory, not from intake’s tag or the subject line. Neither one separates
+these problems, and <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> merges on the subject alone.</li> <li>The desk reads R-41202, R-41209, R-41236, R-41344 and R-41620 as a one-day move, and files them
+under <code>parser</code> by tenant. Their bodies do not show a swap, so re-check them when the parser fix ships.</li> <li>Three reports carry no dates that show a swap: R-41290, R-41417 and R-41514. They stay in <code>parser</code> by tenant, with nothing in their bodies against it.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-5TV1-K8Z7</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_7pxg2d = {
+					__sveltekit_1y1p9j0 = {
 						base: new URL("../../..", location).pathname.slice(0, -1),
-						version: "1793546077218"
+						version: "1793546150622"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					import("../../../_app/immutable/entry/start.D1HzdfF7.js").then(async (kit) => {
-						kit.init(__sveltekit_7pxg2d);
-						const app = await import("../../../_app/immutable/entry/app.Dvk5GVQ2.js");
+						kit.init(__sveltekit_1y1p9j0);
+						const app = await import("../../../_app/immutable/entry/app.BJvDcaJe.js");
 						kit.start(app, element, {
 							node_ids: [0, 5],
 							data: [null,null],

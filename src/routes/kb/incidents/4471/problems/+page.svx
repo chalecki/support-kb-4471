@@ -14,16 +14,14 @@ signature: chalecki
 </script>
 
 [#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. The reports inside it
-describe more than one failure, and the queued parser fix does not reach all of them.
+describe more than one problem, and the queued parser fix does not reach all of them.
 
 ## The problems
 
-<ProblemTable ticket={4471} repo="chalecki/support-kb-4471" tickets={{ parser: 1, hint: 2, 'one-day': 3 }} />
+<ProblemTable ticket={4471} repo="chalecki/support-kb-4471" tickets={{ parser: 1, hint: 2 }} />
 
 <Callout kind="warn">
-The table on the #4471 page shows the same reports with <code>one-day</code> counted inside
-<code>parser</code>. That page files by tenant and footnotes them. This page counts them apart,
-because a month-first parser cannot produce what they describe.
+Do not close <code>hint</code> on the parser fix. It needs its own fix on the form.
 </Callout>
 
 ## How to tell them apart
@@ -34,16 +32,13 @@ because a month-first parser cannot produce what they describe.
   `MM/DD/YYYY` under its date field, so people type month first, and the form reads it the
   tenant's way. These people followed the hint. The bodies look like `parser`; the way in does not.
   Fixing the parser leaves the hint printing the wrong order.
-- **`one-day`.** The date moves by one day, with no swap: R-41202 says Tuesday 12 May against
-  Monday 11 May, and R-41344 had Lisbon on Tuesday and Toronto on Monday for one meeting. The cause
-  is not established yet. The Lisbon and Toronto report points at time zones, and that is a lead,
-  not a finding.
 
 ## What to do with this
 
-- Do not close these on the parser fix. Check `hint` and `one-day` on their own tickets.
 - Count from the tenant directory, not from intake's tag or the subject line. Neither one separates
   these problems, and [decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on the subject alone.
+- The desk reads R-41202, R-41209, R-41236, R-41344 and R-41620 as a one-day move, and files them
+  under `parser` by tenant. Their bodies do not show a swap, so re-check them when the parser fix ships.
 - Three reports carry no dates that show a swap: R-41290, R-41417 and R-41514. They stay in `parser`
   by tenant, with nothing in their bodies against it.
 
